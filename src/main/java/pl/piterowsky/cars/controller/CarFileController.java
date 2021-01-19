@@ -41,7 +41,7 @@ public class CarFileController {
 
         try {
             var cars = csvFileConversionService.saveCarsFromFile(file, color);
-            var message = cars.isEmpty() ? "Cars have been uploaded" : "No cars matching color: " + color;
+            var message = !cars.isEmpty() ? "Cars have been uploaded" : "No cars matching color: " + color;
             response.setObject(cars);
             response.setMessage(message);
             return ResponseEntity.ok(response);
