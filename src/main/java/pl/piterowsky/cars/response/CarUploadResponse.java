@@ -1,11 +1,12 @@
 package pl.piterowsky.cars.response;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
-public class CarUploadResponse<T> {
+@EqualsAndHashCode(callSuper = true)
+public class CarUploadResponse extends BaseResponse {
 
-    private String message;
-    private T object;
+    private int countOfSavedCars;
 
 }

@@ -1,4 +1,4 @@
-package pl.piterowsky.cars;
+package pl.piterowsky.cars.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import pl.piterowsky.cars.model.Car;
