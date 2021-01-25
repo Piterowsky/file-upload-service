@@ -5,7 +5,10 @@ Server exposes one POST two endpoints available at
 - `/api/upload`
 - `/api/upload/{car_color}`
 
-Command to run application `./mvnw spring-boot:run`
+Command to run application 
+Maven `./mvnw spring-boot:run` 
+or 
+Docker `mvn clean install -DskipTests && docker build -t cars . && docker run -p 8080:8080 --name cars cars`
 
 ## Extending application for other file types
 At the moment server handle CSV file but is prepared to be extended with other file types. It just need to add new implementation of `FileParser` interface which handle parsing file content to list of key pair values [column_header -> value] and to add spring bean to switch [here](https://github.com/Piterowsky/samochody/blob/master/src/main/java/pl/piterowsky/cars/facade/CarFacade.java).
