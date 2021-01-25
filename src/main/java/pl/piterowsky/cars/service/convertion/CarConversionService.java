@@ -1,5 +1,6 @@
 package pl.piterowsky.cars.service.convertion;
 
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import pl.piterowsky.cars.exception.FileConvertingException;
 import pl.piterowsky.cars.header.CarHeader;
@@ -11,6 +12,8 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+@Log4j2
 
 @Service
 public class CarConversionService implements FileConversionService<Car> {
@@ -26,7 +29,6 @@ public class CarConversionService implements FileConversionService<Car> {
         var name = keyValuePair.get(CarHeader.NAME.getHeader());
         var transactionDate = parseCarDate(keyValuePair.get(CarHeader.TRANSACTION_DATE.getHeader()));
         var color = keyValuePair.get(CarHeader.COLOR.getHeader());
-
         return new Car(id, name, transactionDate, color);
     }
 
@@ -35,7 +37,9 @@ public class CarConversionService implements FileConversionService<Car> {
             var carDateFormat = "dd.MM.yyyy";
             return new Date(new SimpleDateFormat(carDateFormat).parse(date).getTime());
         } catch (ParseException e) {
-            throw new FileConvertingException(String.format("Cannot parse date: %s", date));
+            var message = String.format("Cannot parse date: %s", date);
+            log.warn("Cannot convert date: {}", date);
+            throw new FileConvertingException(message);
         }
     }
 

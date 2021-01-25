@@ -4,8 +4,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import pl.piterowsky.cars.exception.IncorrectFileFormatException;
 import pl.piterowsky.cars.file.ContentType;
-import pl.piterowsky.cars.file.parser.CsvFileParser;
+import pl.piterowsky.cars.file.parser.impl.CsvFileParser;
 import pl.piterowsky.cars.file.parser.FileParser;
+import pl.piterowsky.cars.file.parser.impl.ExcelFileParser;
 import pl.piterowsky.cars.model.Car;
 import pl.piterowsky.cars.repository.CarRepository;
 import pl.piterowsky.cars.service.convertion.CarConversionService;
@@ -50,8 +51,12 @@ public class CarFacade {
     protected FileParser getFileParserByContentType(String contentType) {
         // Ready for future supported file types
         switch (contentType) {
-            case ContentType.TEXT_CSV:
+            case ContentType.CSV:
                 return fileParsers.get(CsvFileParser.BEAN_NAME);
+            case ContentType.XLS:
+            case ContentType.XLSX:
+                return fileParsers.get(ExcelFileParser.BEAN_NAME);
+
             default:
                 throw new IncorrectFileFormatException("Unsupported file content-type");
         }

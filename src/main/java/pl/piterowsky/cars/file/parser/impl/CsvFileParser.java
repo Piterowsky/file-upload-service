@@ -1,4 +1,4 @@
-package pl.piterowsky.cars.file.parser;
+package pl.piterowsky.cars.file.parser.impl;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import pl.piterowsky.cars.exception.FileParsingException;
 import pl.piterowsky.cars.file.ContentType;
+import pl.piterowsky.cars.file.parser.FileParser;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-@Component
+@Component(value = CsvFileParser.BEAN_NAME)
 public class CsvFileParser implements FileParser {
 
     public static final String BEAN_NAME = "csvFileParser";
@@ -42,7 +43,7 @@ public class CsvFileParser implements FileParser {
 
     @Override
     public boolean hasValidFormat(MultipartFile file) {
-        return ContentType.TEXT_CSV.equals(file.getContentType());
+        return ContentType.CSV.equals(file.getContentType());
     }
 
 }

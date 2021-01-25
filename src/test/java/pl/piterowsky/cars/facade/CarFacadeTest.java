@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.web.multipart.MultipartFile;
 import pl.piterowsky.cars.exception.IncorrectFileFormatException;
 import pl.piterowsky.cars.file.ContentType;
-import pl.piterowsky.cars.file.parser.CsvFileParser;
+import pl.piterowsky.cars.file.parser.impl.CsvFileParser;
 import pl.piterowsky.cars.file.parser.FileParser;
 import pl.piterowsky.cars.model.Car;
 import pl.piterowsky.cars.repository.CarRepository;
@@ -43,7 +43,7 @@ class CarFacadeTest {
         var multipartFile = mock(MultipartFile.class);
         var expectedNumberOfSavedCars = 5;
 
-        doReturn(ContentType.TEXT_CSV).when(multipartFile).getContentType();
+        doReturn(ContentType.CSV).when(multipartFile).getContentType();
         doReturn(Collections.emptyList()).when(carConversionService).getKeyValuesAsModel(Mockito.anyList());
         doReturn(fileParser).when(fileParsers).get(CsvFileParser.BEAN_NAME);
         doReturn(savedCarList).when(carRepository).saveAll(Mockito.anyList());
@@ -99,7 +99,7 @@ class CarFacadeTest {
         var csvFileParser = mock(CsvFileParser.class);
         doReturn(csvFileParser).when(fileParsers).get(CsvFileParser.BEAN_NAME);
 
-        var fileParser = carFacade.getFileParserByContentType(ContentType.TEXT_CSV);
+        var fileParser = carFacade.getFileParserByContentType(ContentType.CSV);
 
         assertTrue(fileParser instanceof CsvFileParser);
     }

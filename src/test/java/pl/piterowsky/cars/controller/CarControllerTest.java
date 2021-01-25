@@ -32,7 +32,7 @@ class CarControllerTest {
         void uploadFile_whenCsvFileGiven_responseWithNumberFilteredAndUploadedCars() throws Exception {
             var content = Files.readAllBytes(Paths.get("src/test/resources/cars.csv"));
             var request = multipart(CarController.UPLOAD_CARS_URL)
-                    .file(new MockMultipartFile("file", "cars.csv", ContentType.TEXT_CSV, content));
+                    .file(new MockMultipartFile("file", "cars.csv", ContentType.CSV, content));
 
             mockMvc
                     .perform(request)
@@ -44,7 +44,7 @@ class CarControllerTest {
         void uploadFile_whenNoColorGiven_responseWithAllCarsFromFile() throws Exception {
             var content = Files.readAllBytes(Paths.get("src/test/resources/cars.csv"));
             var request = multipart(CarController.UPLOAD_CARS_FILTERED_BY_COLOR_URL, "Biały")
-                    .file(new MockMultipartFile("file", "cars.csv", ContentType.TEXT_CSV, content));
+                    .file(new MockMultipartFile("file", "cars.csv", ContentType.CSV, content));
 
             mockMvc
                     .perform(request)
@@ -72,7 +72,7 @@ class CarControllerTest {
             var content = Files.readAllBytes(Paths.get("src/test/resources/cars.csv"));
             var contentWithInvalidRow = concatenateByteArrays(content, "6, Test, 12/12/1996, Red".getBytes());
             var request = multipart(CarController.UPLOAD_CARS_FILTERED_BY_COLOR_URL, "Biały")
-                    .file(new MockMultipartFile("file", "cars.csv", ContentType.TEXT_CSV, contentWithInvalidRow));
+                    .file(new MockMultipartFile("file", "cars.csv", ContentType.CSV, contentWithInvalidRow));
 
             mockMvc
                     .perform(request)
