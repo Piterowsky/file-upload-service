@@ -15,3 +15,6 @@ Simillary to extending supported file types it is possible to extend application
 
 ## Sample file
 In test there is a [sample of CSV file](https://github.com/Piterowsky/samochody/blob/master/src/test/resources/cars.csv) which can be used as a template for demonstration purposes.
+
+## Interesting classes
+[FileParserTest](https://github.com/Piterowsky/file-upload-service/blob/master/src/test/java/pl/piterowsky/cars/file/parser/impl/FileParserTest.java) - Interesting example of use junit5 parametrized tests
