@@ -17,7 +17,11 @@ At the moment server handle CSV file but is prepared to be extended with other f
 Simillary to extending supported file types it is possible to extend application for new entities. To do that need to be provided implementation of `FileConversionService` with new model class.
 
 ## Sample file
-In test there is a [sample of CSV file](https://github.com/Piterowsky/samochody/blob/master/src/test/resources/cars.csv) which can be used as a template for demonstration purposes.
+In test there is a 
+- [sample of CSV file](https://github.com/Piterowsky/samochody/blob/master/src/test/resources/cars.csv)
+- [sample of XLS file](https://github.com/Piterowsky/samochody/blob/master/src/test/resources/cars.xls)
+- [sample of XLSX file](https://github.com/Piterowsky/samochody/blob/master/src/test/resources/cars.xlsx)
+which can be used as a template for demonstration purposes.
 
 ## Interesting classes
 [FileParserTest](https://github.com/Piterowsky/file-upload-service/blob/master/src/test/java/pl/piterowsky/cars/file/parser/impl/FileParserTest.java) - Interesting example of use junit5 parametrized tests
