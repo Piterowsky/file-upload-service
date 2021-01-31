@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "webConfig.cors.allowedOrigins",
+      "type": "java.lang.String[]",
+      "description": "Contain all origins which will be included in Access-Control-Allow-Origin header."
+  }
+] }
