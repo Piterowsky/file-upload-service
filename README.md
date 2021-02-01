@@ -1,7 +1,7 @@
 # Cars file upload
 ### Spring project handling upload file with cars records and saving it to database
 
-> It is just a showcase application, not production ready software/ so please have it in mind :wink:
+> It is just a showcase application, not production ready software so please have it in mind :wink:
 
 Server exposes one POST two endpoints available at
 - `/api/upload`
