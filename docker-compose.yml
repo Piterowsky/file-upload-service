@@ -1,0 +1,15 @@
+version: "3.3"
+services:
+  webapp:
+    build:
+      context: ./webapp
+      dockerfile: Dockerfile-dev
+    ports:
+      - "80:80"
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    ports:
+      - "8080:8080"
+

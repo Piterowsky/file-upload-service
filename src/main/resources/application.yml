@@ -14,4 +14,4 @@ spring:
 
 webConfig:
   cors:
-    allowedOrigins: http://localhost:1234, http://localhost:1235
+    allowedOrigins: http://localhost:1234, http://localhost

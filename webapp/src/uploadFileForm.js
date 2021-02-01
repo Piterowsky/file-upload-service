@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, {useRef, useState} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
@@ -18,7 +18,7 @@ const uploadFileForm = () => {
         const formData = new FormData();
         formData.append('file', selectedFile);
         const url = process.env.API_BASE_URL + '/api/upload/' + colorInput.current.value;
-        fetch(url, { method: 'POST', body: formData })
+        fetch(url, {method: 'POST', body: formData })
             .then((response) => response.json())
             .then((result) => {
                 if (result.countOfSavedCars > 0) {
@@ -53,13 +53,13 @@ const uploadFileForm = () => {
         <Form onSubmit={sendFileToApi}>
             <div className="mb-3">
                 <Form.File id="file-input" custom>
-                    <Form.File.Input isInvalid onChange={onFileChange} style={{ marginBottom: '5px' }} />
+                    <Form.File.Input isInvalid onChange={onFileChange} style={{marginBottom: '5px'}}/>
                     <Form.File.Label data-browse="Select file">{getSelectedFileName()}</Form.File.Label>
                     <Form.Control.Feedback type="invalid">You have to choose file</Form.Control.Feedback>
 
                     <InputGroup className="mb-3">
                         <InputGroup.Prepend>
-                            <InputGroup.Checkbox aria-label="Checkbox for color input" onChange={colorFieldToggle} />
+                            <InputGroup.Checkbox aria-label="Checkbox for color input" onChange={colorFieldToggle}/>
                             <InputGroup.Text id="color-input-label" aria-label="Text input for filtering cars by color">
                                 Color
                             </InputGroup.Text>
@@ -82,6 +82,6 @@ const uploadFileForm = () => {
             </div>
         </Form>
     );
-};
+}
 
 export default uploadFileForm;

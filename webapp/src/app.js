@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import uploadFileForm from './uploadFileForm';
+import UploadFileForm from './uploadFileForm.js';
 import { Jumbotron } from 'react-bootstrap';
 
 const App = () => {
@@ -21,7 +21,7 @@ const App = () => {
     return (
         <div style={containerStyles}>
             <Jumbotron style={jumbotronStyles}>
-                <uploadFileForm />
+                <UploadFileForm />
             </Jumbotron>
         </div>
     );
