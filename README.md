@@ -1,7 +1,8 @@
-# Cars file upload
-### Spring project handling upload file with cars records and saving it to database
+# File upload service
 
-> It is just a showcase application, not production ready software so please have it in mind :wink:
+Application takes file (csv/xls/xlsx) with records of some entity (at this moment it only support cars - look at "Sample file" section), and saves it into in memory database
+
+> It is just a showcase application, not production ready software, so please have it in mind :wink:
 
 Server exposes one POST two endpoints available at
 - `/api/upload`
@@ -9,10 +10,10 @@ Server exposes one POST two endpoints available at
 
 Command to run application `docker-compose up --build`
 
-Web form for uploading file is on `http://localhost`
+Web form for uploading file is accessible from `http://localhost`
 
 ## Extending application for other file types
-At the moment server handle CSV file but is prepared to be extended with other file types. It just need to add new implementation of `FileParser` interface which handle parsing file content to list of key pair values `[columnHeader -> value]` and to add spring bean to switch [here](https://github.com/Piterowsky/samochody/blob/master/src/main/java/pl/piterowsky/cars/facade/CarFacade.java).
+To add new file extension it's just need to add new implementation of `FileParser` interface which handle parsing file content to list of key pair values `[columnHeader -> value]` and to add spring bean to switch [here](https://github.com/Piterowsky/samochody/blob/master/src/main/java/pl/piterowsky/cars/facade/CarFacade.java).
 
 ## Extending application for other model entities
 Simillary to extending supported file types it is possible to extend application for new entities. To do that need to be provided implementation of `FileConversionService` with new model class.
